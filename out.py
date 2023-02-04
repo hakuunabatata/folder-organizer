@@ -22,14 +22,15 @@ def desorganizeFolder(path):
             print(f'...analysing file {file}')
             name, extension = file.split('.')
 
-            if (extension not in os.listdir(path)):
-                os.mkdir(extension)
-                print(f'...creating dir {extension} in {path}')
+            if (extension not in path):
+                if (extension not in os.listdir(path)):
+                    os.mkdir(extension)
+                    print(f'...creating dir {extension} in {path}')
 
-            os.rename(filePath,
-                      createPath([path, extension, file]))
+                os.rename(filePath,
+                          createPath([path, extension, file]))
 
-            print(f'...moving {name} to {extension} folder')
+                print(f'...moving {name} to {extension} folder')
         else:
             print(f'...analysing folder {file}')
             if (os.listdir(filePath) == []):
